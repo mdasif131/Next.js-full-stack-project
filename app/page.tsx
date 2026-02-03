@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
       <div className="flex min-h-screen flex-col bg-white">
         <main className="flex-1">
           {/* Hero Section  */}
-          <section className="border container mx-auto px-4 py-32">
+          <section className="container mx-auto px-4 py-32">
             <div>
               <h1 className="text-black mb-6 text-6xl font-bold">
                 A better system for tracking job applications
@@ -17,9 +18,11 @@ const Home = () => {
               </p>
 
               <div className="flex flex-col items-center gap-4">
-                <Button size={'lg'} className="h-12 px-8 text-lg font-medium">
-                  Start for free <ArrowRight className="ml-2" />
-                </Button>
+                <Link href={"/sign-up"}>
+                  <Button size={'lg'} className="h-12 px-8 text-lg font-medium">
+                    Start for free <ArrowRight className="ml-2" />
+                  </Button>
+                </Link>
                 <p className="text-sm text-muted-foreground">
                   Free forever. No credit card required
                 </p>
