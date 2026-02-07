@@ -7,7 +7,6 @@ export default function SignOutButton() {
   const router = useRouter();
   return (
     <DropdownMenuItem onClick={async () => {
-      debugger;
       const result = await signOut();
       if (result.data) {
         router.push("/sign-in")
