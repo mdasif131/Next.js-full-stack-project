@@ -7,7 +7,6 @@ const defaultColumns = [
   { name: 'Interviewing', order: 2 },
   { name: 'Offer', order: 3 },
   { name: 'Rejected', order: 6 },
-  { name: 'Approve', order: 4 },
 ];
 export async function initializeUserBoard(userId: string) {
   try {
@@ -33,7 +32,7 @@ export async function initializeUserBoard(userId: string) {
           name: col.name,
           order: col.order,
           boardId: board._id,
-          jobApplication: [],
+          jobApplications: [],
         }),
       ),
     );
