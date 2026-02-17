@@ -4,12 +4,20 @@ import { Card, CardContent } from "./ui/card"
 import { Edit2, EllipsisVertical, ExternalLink, Trash2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { updateJobApplication } from "@/lib/actions/jobApplication";
 
 interface JobApplicationCardProps{
   job: JobApplication,
   columns: Column[]
 }
 const JobApplicationCard = ({ job, columns }: JobApplicationCardProps) => {
+  const handleMove = async (newColumnId : string) => {
+    try {
+      const result = await updateJobApplication(job._id, {columnId: newColumnId})
+    } catch (error) {
+      console.error("Failed to move job application", error)
+    }
+  }
   return (
     <>
       <Card>
@@ -65,7 +73,7 @@ const JobApplicationCard = ({ job, columns }: JobApplicationCardProps) => {
                       {columns
                         .filter(c => c._id !== job.columnId)
                         .map((column, key) => (
-                          <DropdownMenuItem key={key}>
+                          <DropdownMenuItem key={key} onClick={()=> handleMove(column._id)}>
                             Move to {column.name}
                           </DropdownMenuItem>
                         ))}

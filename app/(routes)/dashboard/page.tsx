@@ -29,7 +29,6 @@ const DashboardPage = async () => {
    if (!session?.user) {
      redirect('/sign-in');
   }
-  console.log('🚀 DashboardPage rendered with board:', board);
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto p-6">
