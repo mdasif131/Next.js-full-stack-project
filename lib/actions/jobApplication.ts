@@ -227,3 +227,29 @@ export async function updateJobApplication(
   return { data: JSON.parse(JSON.stringify(updated)) };
 }
 
+export async function deleteJobApplication(id: string) {
+  const session = await getSession();
+
+  if (!session?.user) {
+    return { error: 'Unauthorized' };
+  }
+
+  const jobApplication = await JobApplications.findById(id);
+
+  if (!jobApplication) {
+    return { error: 'Job application not found' };
+  }
+
+  if (jobApplication.userId !== session.user.id) {
+    return { error: 'Unauthorized' };
+  }
+
+  await Column.findByIdAndUpdate(jobApplication.columnId, {
+    $pull: { jobApplications: id },
+  });
+
+  await JobApplications.deleteOne({ _id: id });
+  revalidatePath('/dashboard');
+
+  return { success: true };
+}
