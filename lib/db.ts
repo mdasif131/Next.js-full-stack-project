@@ -18,10 +18,7 @@ if (!global.mongoose) {
 }
 
 async function connectDB() {
-  // 🔍 DEBUG LOGGING
-  console.log('🔍 Starting MongoDB connection...');
-  console.log('📍 URI exists?', !!MONGODB_URI);
-  console.log('📍 URI starts with:', MONGODB_URI?.substring(0, 20));
+
   if (!MONGODB_URI) {
     throw new Error(
       'Please define the MONGODB_URI environment variable inside .env',
