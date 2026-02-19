@@ -45,7 +45,6 @@ async function connectDB() {
   try {
     cached.conn = await cached.promise;
   } catch (e) {
-    console.error('❌ MongoDB connection failed:', e);
     cached.promise = null;
     throw e;
   }
