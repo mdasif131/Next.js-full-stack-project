@@ -292,7 +292,7 @@ const KabanBoard = ({ board, userId }: KanvanBoardProps) => {
       onDragEnd={handleDragEnd}
     >
       <div className='space-y-4'>
-        <div className='flex gap-4 overflow-x-auto pb-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
           {sortedJobs.map((col, index) => {
             const config = COLUMN_CONFIG[index] || {
               color: 'bg-gray-500',
