@@ -34,9 +34,7 @@ async function connectDB() {
       bufferCommands: false,
     };
 
-       console.log('🔌 Attempting new connection...');
     cached.promise = mongoose.connect(MONGODB_URI, opts).then(mongoose => {
-      console.log('✅ MongoDB connected successfully!');
       return mongoose;
     });
   }
